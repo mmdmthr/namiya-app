@@ -11,7 +11,7 @@ class StaffTest extends TestCase
 {
     Use RefreshDatabase;
 
-    public function test_staff_page_is_displayed()
+    public function test_view_staff_page_is_displayed()
     {
         $user = User::factory()->create();
 
