@@ -13,14 +13,14 @@
                     <tr>
                         <td>Name</td>
                         <td>Hire Date</td>
-                        <td>Active</td>
+                        <td>Status</td>
                         <td>Action</td>
                     </tr>
                     @foreach ($staffs as $staff)
                     <tr>
                         <td>{{ $staff->name }}</td>
-                        <td>{{ $staff->hireDate }}</td>
-                        <td>{{ $staff->isActive }}</td>
+                        <td>{{ $staff->hire_date }}</td>
+                        <td>{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</td>
                         <td>Detail</td>
                     </tr>
                     @endforeach

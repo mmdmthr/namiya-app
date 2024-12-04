@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StaffRequest;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,14 @@ class StaffController extends Controller
         return view('staff.create');
     }
 
-    public function store(Request $request)
+    public function store(StaffRequest $request)
     {
-        //
+        try {
+            $staff = Staff::create($request->validated());
+            return redirect()->route('staff.index');            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function show(string $id)

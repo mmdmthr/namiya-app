@@ -64,4 +64,29 @@ class StaffTest extends TestCase
         
         $response->assertOk();
     }
+
+    public function test_can_create_new_staff()
+    {
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->post(
+                '/staff',
+                [
+                    'name' => 'Test Name',
+                    'gender' => 'P',
+                    'birthday' => '1991-12-31',
+                    'phone' => '0899000000',
+                    'email' => 'test@example.com',
+                    'address' => 'Test Address',
+                    'hire_date' => '2022-12-31',
+                    'emergency_contact' => '098899000',
+                    'role_id' => 'AA',
+                    'is_active' => true,
+                ]
+            );
+        
+        $response->assertRedirectToRoute('staff.index');
+    }
 }
