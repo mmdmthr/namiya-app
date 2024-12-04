@@ -27,8 +27,8 @@ class StaffTest extends TestCase
 
         $staff = $staffs->first();
         $response->assertSee($staff->name)
-        ->assertSee($staff->hireDate)
-        ->assertSee($staff->isActive);
+                 ->assertSee($staff->hireDate)
+                 ->assertSee($staff->isActive);
     }
 
     public function test_create_new_staff_page_is_displayed()
@@ -40,6 +40,7 @@ class StaffTest extends TestCase
             ->get('/staff/create');
         
         $response->assertOk();
+        $response->assertViewIs('staff.create');
     }
 
     public function test_edit_staff_page_is_displayed()
