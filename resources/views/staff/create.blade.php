@@ -9,55 +9,55 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                <form action="/staff" method="POST">
+                <form action="/staff" method="POST" class="max-w mx-auto">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div>
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+                    <div class="mb-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="birthday">Birthday:</label>
-                        <input type="date" id="birthday" name="birthday" required>
+                    <div class="mb-5">
+                        <label for="birthday" class="block mb-2 text-sm font-medium text-gray-900">Birthday</label>
+                        <input type="date" id="birthday" name="birthday" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="gender">Gender:</label>
-                        <select id="gender" name="gender" required>
+                    <div class="mb-5">
+                        <label for="gender" class="block mb-2 text-sm font-medium text-gray-900">Gender</label>
+                        <select id="gender" name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="">Select Gender</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
                         </select>
                     </div>
 
-                    <div>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="mb-5">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="phone">Phone:</label>
-                        <input type="text" id="phone" name="phone" required>
+                    <div class="mb-5">
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone</label>
+                        <input type="text" id="phone" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="emergency_contact">Emergency Contact:</label>
-                        <input type="text" id="emergency_contact" name="emergency_contact" required>
+                    <div class="mb-5">
+                        <label for="emergency_contact" class="block mb-2 text-sm font-medium text-gray-900">Emergency Contact</label>
+                        <input type="text" id="emergency_contact" name="emergency_contact" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="address">Address:</label>
-                        <textarea id="address" name="address" rows="4" required></textarea>
+                    <div class="mb-5">
+                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Address</label>
+                        <textarea id="address" name="address" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
                     </div>
 
-                    <div>
-                        <label for="hire_date">Hire Date:</label>
-                        <input type="date" id="hire_date" name="hire_date" required>
+                    <div class="mb-5">
+                        <label for="hire_date" class="block mb-2 text-sm font-medium text-gray-900">Hire Date</label>
+                        <input type="date" id="hire_date" name="hire_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
-                    <div>
-                        <label for="role_id">Role:</label>
-                        <select id="role_id" name="role_id" required>
+                    <div class="mb-5">
+                        <label for="role_id" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                        <select id="role_id" name="role_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="">Select Role</option>
                             <option value="APJ">Apoteker Penanggungjawab</option>
                             <option value="APING">Apoteker Pendamping</option>
@@ -66,12 +66,12 @@
                         </select>
                     </div>
 
-                    <div>
-                        <label for="is_active">Active:</label>
+                    <div class="mb-5">
+                        <label for="is_active" class="block mb-2 text-sm font-medium text-gray-900">Active</label>
                         <input type="checkbox" id="is_active" name="is_active" value="1">
                     </div>
                     <div>
-                        <button type="submit">Create</button>
+                        <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Create</button>
                     </div>
                 </form>
                 </div>
