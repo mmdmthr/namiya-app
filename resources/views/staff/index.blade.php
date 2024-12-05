@@ -11,28 +11,28 @@
                 <div class="p-6">
                     <a href="{{ route('staff.create') }}">
                         <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                            Create
+                            Add
                         </button>
                     </a>
                     <div class="relative overflow-x-auto">
-                        <table class="table-fixed border-collapse border border-slate-500 w-full text-sm text-left rtl:text-right">
-                            <thead>
+                        <table class="table-fixed border-collapse border border-slate-300 w-full text-sm text-left rtl:text-right text-gray-700">
+                            <thead class="text-xs text-gray-700 uppercase bg-slate-300">
                                 <tr>
-                                    <th class="border border-slate-600 px-6 py-3">Name</th>
-                                    <th class="border border-slate-600 px-6 py-3">Role</th>
-                                    <th class="border border-slate-600 px-6 py-3">Hire Date</th>
-                                    <th class="border border-slate-600 px-6 py-3">Status</th>
-                                    <th class="border border-slate-600 px-6 py-3">Action</th>
+                                    <th class="border border-slate-400 px-6 py-3">Name</th>
+                                    <th class="border border-slate-400 px-6 py-3">Role</th>
+                                    <th class="border border-slate-400 px-6 py-3">Hire Date</th>
+                                    <th class="border border-slate-400 px-6 py-3">Status</th>
+                                    <th class="border border-slate-400 px-6 py-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($staffs as $staff)
                                 <tr>
-                                    <td class="border border-slate-700 px-6 py-3">{{ $staff->name }}</td>
-                                    <td class="border border-slate-700 px-6 py-3">{{ $staff->role_id }}</td>
-                                    <td class="border border-slate-700 px-6 py-3">{{ $staff->hire_date }}</td>
-                                    <td class="border border-slate-700 px-6 py-3">{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</td>
-                                    <td class="border border-slate-700 px-6 py-3">Detail</td>
+                                    <td class="border border-slate-300 px-6 py-3">{{ $staff->name }}</td>
+                                    <td class="border border-slate-300 px-6 py-3">{{ $staff->role_id }}</td>
+                                    <td class="border border-slate-300 px-6 py-3">{{ $staff->hire_date }}</td>
+                                    <td class="border border-slate-300 px-6 py-3">{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</td>
+                                    <td class="border border-slate-300 px-6 py-3">Detail</td>
                                 </tr>
                                 @endforeach
                             </tbody>
