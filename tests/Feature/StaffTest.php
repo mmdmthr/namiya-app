@@ -57,12 +57,22 @@ class StaffTest extends TestCase
     public function test_view_single_staff_page_is_displayed()
     {
         $user = User::factory()->create();
+        $staff = Staff::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get("/staff/$user->id");
+            ->get("/staff/$staff->id");
         
         $response->assertOk();
+        $response->assertViewIs('staff.show');
+        $response->assertViewHas('staff', $staff);
+        $response->assertSee($staff->name)
+                 ->assertSee($staff->birthday)
+                 ->assertSee($staff->emergency_contact)
+                 ->assertSee($staff->is_active)
+                 ->assertSee($staff->hire_date)
+                 ->assertSee($staff->address)
+                 ->assertSee($staff->is_active);
     }
 
     public function test_can_create_new_staff()

@@ -32,7 +32,9 @@
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->role_id }}</td>
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->hire_date }}</td>
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</td>
-                                    <td class="border border-slate-300 px-6 py-3">Detail</td>
+                                    <td class="border border-slate-300 px-6 py-3">
+                                        <a href="{{ route('staff.show', ['staff' => $staff ]) }}">View Detail</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

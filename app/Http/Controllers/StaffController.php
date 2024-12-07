@@ -29,9 +29,9 @@ class StaffController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function show(Staff $staff)
     {
-        //
+        return view('staff.show', compact('staff'));
     }
 
     public function edit(string $id)
