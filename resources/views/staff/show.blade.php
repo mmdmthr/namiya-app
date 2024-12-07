@@ -73,7 +73,7 @@
 
                     <div class="mb-5">
                         <b>Status</b>
-                        <p>Aktif</p>
+                        <p>{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</p>
                     </div>
                     <div>
                         <a href="{{ route('staff.edit', ['staff' => $staff]) }}" class="inline-flex items-center my-4 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Edit Staff</a>

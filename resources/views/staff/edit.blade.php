@@ -78,11 +78,11 @@
                     </div>
 
                     <div class="mb-5">
-                        <label for="is_active" class="inline-flex items-center cursor-pointer">
-                            <input type="checkbox" id="is_active" name="is_active" value="{{ $staff->is_active }}" class="sr-only peer">
-                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                            <span class="ms-3 text-md font-medium text-gray-900">Active</span>
-                        </label>
+                        <label for="is_active" class="inline-flex items-center cursor-pointer">Status</label>
+                        <select id="is_active" name="is_active" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <option value="0" @selected($staff->is_active == 0)>Non-Aktif</option>
+                            <option value="1" @selected($staff->is_active == 1)>Aktif</option>
+                        </select>
                     </div>
                     <div>
                         <button type="submit" class="inline-flex items-center my-4 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Save</button>
