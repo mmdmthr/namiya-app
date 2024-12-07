@@ -34,14 +34,19 @@ class StaffController extends Controller
         return view('staff.show', compact('staff'));
     }
 
-    public function edit(string $id)
+    public function edit(Staff $staff)
     {
-        //
+        return view('staff.edit', compact('staff'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(StaffRequest $request, Staff $staff)
     {
-        //
+        try {
+            $staff->update($request->validated());
+            return redirect()->route('staff.show', ['staff' => $staff]);            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function destroy(string $id)

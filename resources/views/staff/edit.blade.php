@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add New Staff') }}
+            {{ __('Edit Staff') }}
         </h2>
     </x-slot>
 
@@ -18,72 +18,74 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('staff.store') }}" method="POST" class="max-w mx-auto">
+                <form action="{{ route('staff.update', ['staff' => $staff ] ) }}" method="POST" class="max-w mx-auto">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    @method('put')
                     <div class="mb-5">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="name" name="name" value="{{ $staff->name }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="birthday" class="block mb-2 text-sm font-medium text-gray-900">Birthday</label>
-                        <input type="date" id="birthday" name="birthday" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="date" id="birthday" name="birthday" value="{{ $staff->birthday }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="gender" class="block mb-2 text-sm font-medium text-gray-900">Gender</label>
                         <select id="gender" name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="">Select Gender</option>
-                            <option value="L">Laki-laki</option>
-                            <option value="P">Perempuan</option>
+                            <option value="L" @selected($staff->gender == 'L')>Laki-laki</option>
+                            <option value="P" @selected($staff->gender == 'P') >Perempuan</option>
                         </select>
                     </div>
 
                     <div class="mb-5">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="email" id="email" name="email" value="{{ $staff->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone</label>
-                        <input type="text" id="phone" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="phone" name="phone" value="{{ $staff->phone }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="emergency_contact" class="block mb-2 text-sm font-medium text-gray-900">Emergency Contact</label>
-                        <input type="text" id="emergency_contact" name="emergency_contact" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="emergency_contact" name="emergency_contact" value="{{ $staff->emergency_contact }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Address</label>
-                        <textarea id="address" name="address" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                        <textarea id="address" name="address" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>{{ $staff->address }}
+                        </textarea>
                     </div>
 
                     <div class="mb-5">
                         <label for="hire_date" class="block mb-2 text-sm font-medium text-gray-900">Hire Date</label>
-                        <input type="date" id="hire_date" name="hire_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="date" id="hire_date" name="hire_date" value="{{ $staff->hire_date }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
 
                     <div class="mb-5">
                         <label for="role_id" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                         <select id="role_id" name="role_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="">Select Role</option>
-                            <option value="APJ">Apoteker Penanggungjawab</option>
-                            <option value="APING">Apoteker Pendamping</option>
-                            <option value="AA">Asisten Apoteker</option>
-                            <option value="IN">Intern</option>
+                            <option value="APJ" @selected($staff->role_id == 'APJ')>Apoteker Penanggungjawab</option>
+                            <option value="APING" @selected($staff->role_id == 'APING')>Apoteker Pendamping</option>
+                            <option value="AA" @selected($staff->role_id == 'AA')>Asisten Apoteker</option>
+                            <option value="IN" @selected($staff->role_id == 'IN')>Intern</option>
                         </select>
                     </div>
 
                     <div class="mb-5">
                         <label for="is_active" class="inline-flex items-center cursor-pointer">
-                            <input type="checkbox" id="is_active" name="is_active" value="1" class="sr-only peer">
+                            <input type="checkbox" id="is_active" name="is_active" value="{{ $staff->is_active }}" class="sr-only peer">
                             <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                             <span class="ms-3 text-md font-medium text-gray-900">Active</span>
                         </label>
                     </div>
                     <div>
-                        <button type="submit" class="inline-flex items-center my-4 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Add</button>
+                        <button type="submit" class="inline-flex items-center my-4 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Save</button>
                     </div>
                 </form>
                 </div>
