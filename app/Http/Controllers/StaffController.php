@@ -49,8 +49,13 @@ class StaffController extends Controller
         }
     }
 
-    public function destroy(string $id)
+    public function destroy(Staff $staff)
     {
-        //
+        try {
+            $staff->delete();
+            return redirect()->route('staff.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

@@ -127,4 +127,21 @@ class StaffTest extends TestCase
         
         $response->assertRedirectToRoute('staff.show', ['staff' => $staff]);
     }
+
+    public function test_can_delete_staff()
+    {
+        $user = User::factory()->create();
+        $staff = Staff::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->delete(
+                route('staff.destroy', ['staff' => $staff])
+            );
+        
+        $response->assertRedirectToRoute('staff.index');
+        $this->assertDatabaseMissing('staff', [
+            'email' => $staff->email,
+        ]);
+    }
 }
