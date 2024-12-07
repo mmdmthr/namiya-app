@@ -19,7 +19,7 @@ class StaffTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/staff');
+            ->get(route('staff.index'));
         
         $response->assertOk();
         $response->assertViewIs('staff.index');
@@ -37,7 +37,7 @@ class StaffTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/staff/create');
+            ->get(route('staff.create'));
         
         $response->assertOk();
         $response->assertViewIs('staff.create');
@@ -46,23 +46,35 @@ class StaffTest extends TestCase
     public function test_edit_staff_page_is_displayed()
     {
         $user = User::factory()->create();
+        $staff = Staff::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get("/staff/$user->id/edit");
+            ->get(route('staff.edit', ['staff' => $staff]));
         
         $response->assertOk();
+        $response->assertViewIs('staff.edit');
     }
 
     public function test_view_single_staff_page_is_displayed()
     {
         $user = User::factory()->create();
+        $staff = Staff::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get("/staff/$user->id");
+            ->get(route('staff.show', ['staff' => $staff]));
         
         $response->assertOk();
+        $response->assertViewIs('staff.show');
+        $response->assertViewHas('staff', $staff);
+        $response->assertSee($staff->name)
+                 ->assertSee($staff->birthday)
+                 ->assertSee($staff->emergency_contact)
+                 ->assertSee($staff->is_active)
+                 ->assertSee($staff->hire_date)
+                 ->assertSee($staff->address)
+                 ->assertSee($staff->is_active);
     }
 
     public function test_can_create_new_staff()
@@ -72,7 +84,7 @@ class StaffTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->post(
-                '/staff',
+                route('staff.store'),
                 [
                     'name' => 'Test Name',
                     'gender' => 'P',
@@ -88,5 +100,48 @@ class StaffTest extends TestCase
             );
         
         $response->assertRedirectToRoute('staff.index');
+    }
+
+    public function test_can_update_staff()
+    {
+        $user = User::factory()->create();
+        $staff = Staff::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->patch(
+                route('staff.update', ['staff' => $staff]),
+                [
+                    'name' => 'Test Name',
+                    'gender' => 'P',
+                    'birthday' => '1991-12-31',
+                    'phone' => '0899000000',
+                    'email' => 'test@example.com',
+                    'address' => 'Test Address',
+                    'hire_date' => '2022-12-31',
+                    'emergency_contact' => '098899000',
+                    'role_id' => 'AA',
+                    'is_active' => true,
+                ]
+            );
+        
+        $response->assertRedirectToRoute('staff.show', ['staff' => $staff]);
+    }
+
+    public function test_can_delete_staff()
+    {
+        $user = User::factory()->create();
+        $staff = Staff::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->delete(
+                route('staff.destroy', ['staff' => $staff])
+            );
+        
+        $response->assertRedirectToRoute('staff.index');
+        $this->assertDatabaseMissing('staff', [
+            'email' => $staff->email,
+        ]);
     }
 }

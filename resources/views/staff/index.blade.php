@@ -9,10 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <a href="{{ route('staff.create') }}">
-                        <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                            Add
-                        </button>
+                    <a href="{{ route('staff.create') }}" class="inline-flex items-center my-4 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                        Add Staff
                     </a>
                     <div class="relative overflow-x-auto">
                         <table class="table-fixed border-collapse border border-slate-300 w-full text-sm text-left rtl:text-right text-gray-700">
@@ -32,7 +30,9 @@
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->role_id }}</td>
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->hire_date }}</td>
                                     <td class="border border-slate-300 px-6 py-3">{{ $staff->is_active ? 'Aktif' : 'Non-Aktif' }}</td>
-                                    <td class="border border-slate-300 px-6 py-3">Detail</td>
+                                    <td class="border border-slate-300 px-6 py-3">
+                                        <a href="{{ route('staff.show', ['staff' => $staff ]) }}">View Detail</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -31,7 +31,7 @@ class StaffRequest extends FormRequest
             'hire_date' => 'required|date',
             'emergency_contact' => 'required|string',
             'role_id' => 'required|string|in:APJ,APING,AA,IN',
-            'is_active' => 'required|boolean',
+            'is_active' => 'nullable|boolean',
         ];
     }
 }
